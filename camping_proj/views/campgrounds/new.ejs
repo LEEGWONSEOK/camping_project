@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Campground</title>
+</head>
+<body>
+  <h1>캠핑장 등록하기</h1>
+  <form action="/campgrounds" method="POST">
+    <div>
+      <label for="title">이름</label>
+      <input type="text" name="campground[title]" id="title">
+    </div>
+    <div>
+      <label for="price">가격</label>
+      <input type="text" name="campground[price]" id="price">
+    </div>
+    <div>
+      <label for="description">설명</label>
+      <input type="text" name="campground[description]" id="description">
+    </div>
+    <div>
+      <label for="location">주소</label>
+      <input type="text" name="campground[location]" id="location">
+    </div>
+    <button>등록하기</button>
+  </form>
+  <div>
+    <a href="/campgrounds">모든 캠핑장 보기</a>
+  </div>
+  
+</body>
+</html>
