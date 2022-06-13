@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campground</title>
-</head>
-<body>
-  <div>
-    <a href="/campgrounds">모든 캠핑장 보기</a>
-  </div>
-  <h1><%= campground.title %> </h1>
-  <ul>
-    <li><%= campground.price %></li>
-    <li><%= campground.description %></li>
-    <li><%= campground.location %></li>
-  </ul>
-  
+<% layout('layouts/boilerplate') %> 
+<h1><%= campground.title %> </h1>
+<ul>
+  <li><%= campground.price %></li>
+  <li><%= campground.description %></li>
+  <li><%= campground.location %></li>
+</ul>
+<div>
   <a href="/campgrounds/<%= campground._id %>/edit">캠핑장 수정하기</a>
-  <a href="/campgrounds">모든 캠핑장 보기</a>
-  
-</body>
-</html>
+  <a href="/campgrounds">모든 캠핑장 보기</a>  
+</div>
