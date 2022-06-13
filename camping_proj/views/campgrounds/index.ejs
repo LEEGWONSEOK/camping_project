@@ -1,10 +1,22 @@
 <% layout('layouts/boilerplate') %> 
-<h1>모든 캠핑장 보기</h1>
-<div>
-  <a href="/campgrounds/new">캠핑장 등록하기</a>
+<h2 class="mb-4">모든 캠핑장 보기</h2>
+<% for (let campground of campgrounds) {%> 
+<div class="card mb-4">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="<%= campground.image %>" alt="" class="img-fluid">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= campground.title %></h5>
+        <p class="card-text"><%= campground.description %></p>
+        <p class="card-text">
+          <small class="text-muted"><%= campground.description %></small>
+        </p>
+        <a class="btn btn-primary" href="/campgrounds/<%= campground._id %>">상세보기</a>
+      </div>
+    </div>
+  </div>  
 </div>
-<ul>
-  <% for (let campground of campgrounds) {%> 
-  <li><a href="/campgrounds/<%= campground._id %> "><%= campground.title %></a></li>
-  <%}%> 
-</ul>
+  
+  <%}%>
