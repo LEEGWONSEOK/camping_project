@@ -11,7 +11,14 @@
     <a href="/campgrounds">모든 캠핑장 보기</a>
   </div>
   <h1><%= campground.title %> </h1>
-  <h2><%= campground.location %> </h2>
+  <ul>
+    <li><%= campground.price %></li>
+    <li><%= campground.description %></li>
+    <li><%= campground.location %></li>
+  </ul>
+  
+  <a href="/campgrounds/<%= campground._id %>/edit">캠핑장 수정하기</a>
+  <a href="/campgrounds">모든 캠핑장 보기</a>
   
 </body>
 </html>
