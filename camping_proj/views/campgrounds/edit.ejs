@@ -1,29 +1,44 @@
 <% layout('layouts/boilerplate') %> 
-<h1>캠핑장 수정하기</h1>
-<form action="/campgrounds/<%= campground._id  %>?_method=PUT" method="POST">
-  <div>
-    <label for="title">이름</label>
-    <input type="text" name="campground[title]" id="title" value="<%= campground.title %>">
+<div class="row">
+  <div class="mb-4">
+    <h2 class="text-center">캠핑장 수정하기</h2>
   </div>
-  <div>
-    <label for="price">가격</label>
-    <input type="text" name="campground[price]" id="price" value="<%= campground.price %>">
+  <div class="col-4 offset-4">
+    <form action="/campgrounds/<%= campground._id  %>?_method=PUT" method="POST">
+      <div class="mb-4">
+        <label for="title" class="form-label">캠핑장명</label>
+        <input class="form-control" type="text" name="campground[title]" id="title" value="<%= campground.title %>">
+      </div>
+      <div class="mb-4">
+        <label for="price" class="form-label">가격</label>
+        <div class="input-group">
+          <input class="form-control" type="text" name="campground[price]" id="price" value="<%= campground.price %>">
+          <span class="input-group-text text-muted">₩</span>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="description" class="form-label">설명</label>
+        <textarea class="form-control" rows="4" type="text" name="campground[description]" id="description"><%= campground.description %></textarea>
+      </div>
+      <div class="mb-4">
+        <label for="location" class="form-label">주소</label>
+        <input class="form-control" type="text" name="campground[location]" id="location" value="<%= campground.location %>">
+      </div>
+      <div class="mb-4">
+        <label for="image" class="form-label">사진</label>
+        <input class="form-control" type="text" name="campground[image]" id="image" value="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80">
+      </div>
+      
+      <div class="mb-4">
+        <button class="btn btn-success">수정하기</button>
+      </div>
+    </form>
+    <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+      <button class="btn btn-success">삭제하기</button>
+    </form>
+    <div>
+      <a href="/campgrounds/<%= campground._id %>">캠핑장으로 가기</a>
+      <a href="/campgrounds">모든 캠핑장 보기</a>
+    </div>
   </div>
-  <div>
-    <label for="description">설명</label>
-    <input type="text" name="campground[description]" id="description" value="<%= campground.description %>">
-  </div>
-  <div>
-    <label for="location">주소</label>
-    <input type="text" name="campground[location]" id="location" value="<%= campground.location %>">
-  </div>
-  <button>수정하기</button>
-</form>
-<div>
-  <a href="/campgrounds/<%= campground._id %>">캠핑장으로 가기</a>
-  <a href="/campgrounds">모든 캠핑장 보기</a>
 </div>
-<form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-  <button>캠핑장 삭제하기</button>
-</form>
-
