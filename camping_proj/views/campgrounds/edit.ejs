@@ -4,29 +4,44 @@
     <h2 class="text-center">캠핑장 수정하기</h2>
   </div>
   <div class="col-4 offset-4">
-    <form action="/campgrounds/<%= campground._id  %>?_method=PUT" method="POST">
+    <form action="/campgrounds/<%= campground._id  %>?_method=PUT" method="POST" novalidate class="validated-form">
       <div class="mb-4">
         <label for="title" class="form-label">캠핑장명</label>
-        <input class="form-control" type="text" name="campground[title]" id="title" value="<%= campground.title %>">
+        <input class="form-control" type="text" name="campground[title]" id="title" value="<%= campground.title %>" required>
+        <div class="invalid-feedback">
+          (필수) 캠핑장명을 입력해주세요!
+        </div>
       </div>
       <div class="mb-4">
         <label for="price" class="form-label">가격</label>
         <div class="input-group">
-          <input class="form-control" type="text" name="campground[price]" id="price" value="<%= campground.price %>">
+          <input class="form-control" type="text" name="campground[price]" id="price" value="<%= campground.price %>" required>
           <span class="input-group-text text-muted">₩</span>
+          <div class="invalid-feedback">
+            (필수) 가격을 입력해주세요!
+          </div>
         </div>
       </div>
       <div class="mb-4">
         <label for="description" class="form-label">설명</label>
-        <textarea class="form-control" rows="4" type="text" name="campground[description]" id="description"><%= campground.description %></textarea>
+        <textarea class="form-control" rows="4" type="text" name="campground[description]" id="description" required><%= campground.description %></textarea>
+        <div class="invalid-feedback">
+          (필수) 캠핑장에 대해 설명해주세요!
+        </div>
       </div>
       <div class="mb-4">
         <label for="location" class="form-label">주소</label>
-        <input class="form-control" type="text" name="campground[location]" id="location" value="<%= campground.location %>">
+        <input class="form-control" type="text" name="campground[location]" id="location" value="<%= campground.location %>" required>
+        <div class="invalid-feedback">
+          (필수) 주소를 입력해주세요!
+        </div>
       </div>
       <div class="mb-4">
         <label for="image" class="form-label">사진</label>
-        <input class="form-control" type="text" name="campground[image]" id="image" value="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80">
+        <input class="form-control" type="text" name="campground[image]" id="image" required value="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80">
+        <div class="invalid-feedback">
+          (필수) 사진 Url을 입력해주세요!
+        </div>
       </div>
       
       <div class="mb-4">
