@@ -6,8 +6,8 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse " id="navbarNav">
+        <ul class="navbar-nav col-4 justify-content-start">
           <li class="nav-item mt-2">
             <a class="nav-link" href="/campgrounds">캠핑장</a>
           </li>
@@ -15,10 +15,20 @@
             <a class="nav-link" href="/campgrounds/new">캠핑장 등록</a>
           </li>
         </ul>
-        <form class="d-flex">
+        
+        <form class="d-flex col-4 justify-content-center">
           <input class="form-control me-2 mt-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success mt-2" type="submit"><i class="bi bi-search"></i></button>
         </form>
+        
+        <ul class="navbar-nav col-4 justify-content-end">
+          <li class="nav-item mt-2">
+            <a class="nav-link" href="">로그인</a>
+          </li>
+        </ul>
+        
+        
+
       </div>
     </div>
   </nav>
