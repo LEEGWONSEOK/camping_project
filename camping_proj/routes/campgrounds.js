@@ -30,12 +30,17 @@ router.get('/new', (req, res) => {
 router.post('/', validateCampground, catchAsync(async (req, res) => {
   const campground = new Campground(req.body.campground);
   await campground.save();
+  req.flash('success', '[알림] 새로운 캠핑장을 추가하셨습니다!');
   res.redirect(`/campgrounds/${campground._id}`);
 }))
 
 // Show Campground
 router.get('/:id', catchAsync(async (req, res) => {
   const campground = await Campground.findById(req.params.id).populate('reviews');
+  if (!campground) {
+    req.flash('error', '[알림] 캠핑장을 찾을 수가 없습니다.');
+    return res.redirect('/campgrounds');
+  }
   res.render('campgrounds/show', { campground });
 }))
 
@@ -48,6 +53,7 @@ router.get('/:id/edit', catchAsync(async(req, res) => {
 router.put('/:id', validateCampground, catchAsync(async (req, res) => {
   const { id } = req.params;
   const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
+  req.flash('success', '[알림] 캠핑장 정보를 수정하셨습니다!');
   res.redirect(`/campgrounds/${campground._id}`);
 }))
 
