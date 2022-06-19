@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') %> 
+<div class="row">
+  <div class="mb-4">
+    <h2 class="text-center">회원가입</h2>
+  </div>
+  <div class="col-4 offset-4">
+    <form action="" method="POST" novalidate class="validated-form">
+      <div class="mb-4">
+        <label for="email" class="form-label">이메일</label>
+        <input class="form-control" type="text" name="email" id="email" required placeholder="example@example.com">
+        <div class="invalid-feedback">
+          (필수) 이메일을 입력해주세요!
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="username" class="form-label">닉네임</label>
+        <input class="form-control" type="text" name="username" id="username" required>
+        <div class="invalid-feedback">
+          (필수) 닉네임을 입력해주세요!
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="password" class="form-label">비밀번호</label>
+        <input class="form-control" type="password" name="password" id="password" required>
+        <div class="invalid-feedback">
+          (필수) 비밀번호를 입력해주세요!
+        </div>
+      </div>
+
+
+      <div class="mb-4">
+        <button class="btn btn-success">가입하기</button>
+      </div>
+    </form>
+</div>
