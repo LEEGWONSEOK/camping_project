@@ -22,9 +22,15 @@
         </form>
         
         <ul class="navbar-nav col-4 justify-content-end">
+          <% if (!currentUser) { %> 
           <li class="nav-item mt-2">
-            <a class="btn" href="/campgrounds/" style="border: 2px solid; color: #D4005B; background-color: #ffffff; border-color: #D4005B">로그인</a>
+            <a class="nav-link" href="/login" style="color: #D4005B;">로그인</a>
           </li>
+          <% } else { %> 
+          <li class="nav-item mt-2">
+            <a class="nav-link" href="/logout" style="color: #D4005B;">로그아웃</a>
+          </li>
+          <% } %> 
         </ul>
         
 
