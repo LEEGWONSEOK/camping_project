@@ -18,14 +18,14 @@
     </div>
   </div>
   <div class="col-4">
-    <h2>리뷰 작성</h2>
+    <h4>캠핑장 리뷰</h4>
     <form class="mb-4 validated-form" action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate>
       <div class="mb-3">
-        <label class="form-label" for="rating">점수</label>
+        <label class="form-label" for="rating">별점 등록</label>
         <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
       </div>
       <div class="mb-3">
-        <label class="form-label" for="comment">리뷰</label>
+        <label class="form-label" for="comment">리뷰 작성</label>
         <textarea class="form-control" name="review[comment]" id="comment" cols="30" rows="3" required placeholder="캠핑 경험을 소개해주세요"></textarea>
       </div>
       <button class="btn text-white" style="background-color: #D4005B;">리뷰 남기기</button>
@@ -35,10 +35,10 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-9">
-            <h5 class="card-title mb-3 mt-1">게스트</h5>
+            <h6 class="card-title mb-3 mt-1"><b>게스트</b></h6>
           </div>
           <div class="col-md-3 mt-1">
-            <p>Rating: <%= review.rating %></p>
+            <p>별점: <%= review.rating %>점</p>
           </div>
         </div>
         <p class="card-text"><%= review.comment %></p>
