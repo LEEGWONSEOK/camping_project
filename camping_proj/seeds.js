@@ -19,6 +19,7 @@ const seedDB = async () => {
     title: 'First Camp',
     price: 10000, 
     description: 'First description',
+    host: '62af361239be9b16ffec3c33',
     image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     location: '부산시 금정구 남산동',
   });
@@ -26,6 +27,7 @@ const seedDB = async () => {
     title: 'Second Camp',
     price: 15000, 
     description: 'Second description',
+    host: '62af361239be9b16ffec3c33',
     image: 'https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     slocation: '부산시 해운대구 우1동',
   });
