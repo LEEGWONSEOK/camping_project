@@ -1,4 +1,6 @@
 <% layout('layouts/boilerplate') %> 
+<link rel="stylesheet" href="/stylesheets/star.css">
+
 <div class="row">
   <div class="col-6 offset-1">
     <div class="card mb-4">
@@ -20,12 +22,25 @@
       <% } %> 
     </div>
   </div>
+
   <div class="col-4">
     <h4>캠핑장 리뷰</h4>
     <form class="mb-4 validated-form" action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate>
-      <div class="mb-3">
+      <div class="mb-1">
         <label class="form-label" for="rating">별점 등록</label>
-        <input class="form-range" type="range" min="1" max="5" name="review[rating]" id="rating">
+        <fieldset class="starability-basic">
+          <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="3" checked aria-label="No rating." />
+          <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset> 
       </div>
       <div class="mb-3">
         <label class="form-label" for="comment">리뷰 작성</label>
@@ -33,17 +48,14 @@
       </div>
       <button class="btn text-white" style="background-color: #D4005B;">리뷰 남기기</button>
     </form>
+    <hr class="mb-4">
     <% for (let review of campground.reviews) { %> 
     <div class="card mb-4">
       <div class="card-body">
         <div class="row">
-          <div class="col-md-9">
-            <h6 class="card-title mb-3 mt-1"><b><%= review.commenter.username %></b></h6>
-          </div>
-          <div class="col-md-3">
-            <p>별점: <%= review.rating %>점</p>
-          </div>
+          <h6 class="card-title mb-3 mt-1"><b><%= review.commenter.username %></b></h6>
         </div>
+        <p class="starability-result" data-rating="<%= review.rating %>"></p>
         <p class="card-text"><%= review.comment %></p>
         <% if (currentUser && review.commenter.equals(currentUser._id)) { %>
         <div>
