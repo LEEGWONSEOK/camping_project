@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "pm2:start": "pm2 start --env production",
+    "pm2:delete": "pm2 delete all"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +24,8 @@
     "multer": "^1.4.5-lts.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^7.1.2"
+    "passport-local-mongoose": "^7.1.2",
+    "pm2": "^5.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"

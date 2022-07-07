@@ -7,7 +7,7 @@ module.exports.readAllCamp = async (req, res) => {
 
 module.exports.readNewCamp = (req, res) => {
   res.render('campgrounds/new');
-}
+} 
 
 module.exports.createCamp = async (req, res) => {
   const campground = new Campground(req.body.campground);
