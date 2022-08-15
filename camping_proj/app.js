@@ -9,11 +9,18 @@ const ExpressError = require('./utils/ExpressError');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const dotenv = require('dotenv');
 
 // Router
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
+
+dotenv.config();
+// if (process.env.NODE_ENV !== 'production') {
+//   dotenv.config();
+// }
+
 
 // MongoDB app Connect 
 mongoose.connect('mongodb://localhost:27017/camping_proj');
@@ -27,6 +34,7 @@ const app = express();
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use('/img', express.static(path.join(__dirname, 'uploads')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
@@ -52,23 +60,22 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// flash message
 app.use((req, res, next) => {
-  console.log(req.session.returnTo);
   res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
   next();
 }) 
 
-// Home 
-app.get('/', (req, res) => {
+app.get('/home', (req, res, next) => {
   res.render('home');
-})
+});
 
 // Routes
-app.use('/', userRoutes);
-app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/reviews', reviewRoutes);
+app.use('/campgrounds', campgroundRoutes);
+app.use('/', userRoutes);
 
 // 404 Not Found
 app.all('*', (req, res, next) => {
@@ -84,5 +91,5 @@ app.use((err, req, res, next) => {
 
 // Server run
 app.listen(3000, () => {
-  console.log('✅ Serving on port 3000')
+  console.log('✅ Serving on port 3000');
 })

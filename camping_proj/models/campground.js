@@ -8,6 +8,12 @@ const CampgroundSchema = new Schema({
   price: Number,
   description: String,
   image: String,
+  // images: [
+  //   {
+  //     url: String,
+  //     filename: String
+  //   }
+  // ],
   location: String,
   host: {
     type: Schema.Types.ObjectId,

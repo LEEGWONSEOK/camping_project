@@ -11,6 +11,7 @@ module.exports.readNewCamp = (req, res) => {
 
 module.exports.createCamp = async (req, res) => {
   const campground = new Campground(req.body.campground);
+  campground.image = req.files[0].location;
   campground.host = req.user._id;
   await campground.save();
   req.flash('success', '[알림] 새로운 캠핑장을 추가하셨습니다!');
@@ -28,7 +29,7 @@ module.exports.readCamp = async (req, res) => {
     req.flash('error', '[알림] 캠핑장을 찾을 수가 없습니다.');
     return res.redirect('/campgrounds');
   }
-  res.render('campgrounds/show', { campground });
+  res.render('campgrounds/show', { campground ,javascriptkey: process.env.JavascriptKey });
 }
 
 module.exports.readCampEdit = async(req, res) => {

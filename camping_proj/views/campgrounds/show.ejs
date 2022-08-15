@@ -4,15 +4,14 @@
 <div class="row">
   <div class="col-6 offset-1">
     <div class="card mb-4">
-      <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="card-img-top" alt="...">
+      <img src="<%= campground.image%> " class="card-img-top" alt="...">
       <div class="card-body">
         <h4 class="card-title mb-4 mt-2"><%= campground.title %></h4>
-        <p class="card-text"><%= campground.description %></p>
+        <p class="card-text text-muted"><%= campground.description %></p>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><b>₩ <%= campground.price %></b><small> / 박</small></li>
-        <li class="list-group-item text-muted"><%= campground.location %></li>
-        <li class="list-group-item"><b>by </b><%= campground.host.username %></li>
+        <li class="list-group-item"><img src="/images/icon_price.png" alt="Logo" width="18" height="18"> <b><%= campground.price %></b><small> / 박</small></li>
+        <li class="list-group-item"><img src="/images/icon_host.png" alt="Logo" width="18" height="18"> <b></b><%= campground.host.username %></li>
       </ul>
       <% if (currentUser && campground.host.equals(currentUser._id)) { %> 
       <div class="card-body">
@@ -20,6 +19,13 @@
         <a class="card-link btn text-white" href="/campgrounds" style="background-color: #D4005B;">모든 캠핑장 보기</a>
       </div>
       <% } %> 
+    </div>
+    <div class="card mb-4">
+      <ul class="list-group list-group-flush">
+        
+        <li class="list-group-item"><img src="/images/icon_location.png" alt="Logo" width="18" height="18"><b> 장소 ⎜</b> <%= campground.location %></li>
+      </ul>
+      <div id="map" style="width:100%;height:350px;"></div>
     </div>
   </div>
 
@@ -69,3 +75,29 @@
     <% } %> 
   </div>
 </div>
+
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%= javascriptkey %>&libraries=services"></script>
+<script>
+  const mapContainer = document.getElementById('map') // 지도를 표시할 div 
+  const mapOption = {
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+  };
+  const map = new kakao.maps.Map(mapContainer, mapOption);
+  const geocoder = new kakao.maps.services.Geocoder();
+  geocoder.addressSearch('<%= campground.location %>', function(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+      const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+      const marker = new kakao.maps.Marker({
+        map: map,
+        position: coords
+      });
+        // const infowindow = new kakao.maps.InfoWindow({
+        //   content: '<div style="width:150px;text-align:center;padding:6px 0;"><%= campground.title %></div>'
+        // });
+        // infowindow.open(map, marker);
+      map.setCenter(coords);
+    } 
+  });    
+</script>

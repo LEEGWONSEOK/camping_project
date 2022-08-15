@@ -27,8 +27,8 @@ module.exports.readLogin = (req, res) => {
   if (req.user) {
     return res.redirect('/campgrounds');
   }
-  console.log('❌ get login', req.session.returnTo);
-  console.log('❌ get login', req.session);
+  // console.log('❌ get login', req.session.returnTo);
+  // console.log('❌ get login', req.session);
   res.render('users/login');
 }
 
