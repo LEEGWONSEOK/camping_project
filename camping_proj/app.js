@@ -68,7 +68,7 @@ app.use((req, res, next) => {
   next();
 }) 
 
-app.get('/home', (req, res, next) => {
+app.get('/', (req, res, next) => {
   res.render('home');
 });
 
