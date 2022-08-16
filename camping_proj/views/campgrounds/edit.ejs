@@ -4,7 +4,7 @@
     <h2 class="text-center">캠핑장 수정하기</h2>
   </div>
   <div class="col-4 offset-4">
-    <form action="/campgrounds/<%= campground._id  %>?_method=PUT" method="POST" novalidate class="validated-form">
+    <form action="/campgrounds/<%= campground._id  %>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
       <div class="mb-4">
         <label for="title" class="form-label">캠핑장명</label>
         <input class="form-control" type="text" name="campground[title]" id="title" value="<%= campground.title %>" required>
@@ -37,12 +37,21 @@
         </div>
       </div>
       <div class="mb-4">
+        <label for="image" class="form-label">사진(필수)</label>
+        <div>
+          <input type="file" name="image" id="image" multiple>
+        </div>
+        <div class="invalid-feedback">
+          (필수) 사진 Url을 입력해주세요!
+        </div>
+      </div>
+      <!-- <div class="mb-4">
         <label for="image" class="form-label">사진</label>
         <input class="form-control" type="text" name="campground[image]" id="image" required value="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80">
         <div class="invalid-feedback">
           (필수) 사진 Url을 입력해주세요!
         </div>
-      </div>
+      </div> -->
       
       <div class="mb-4">
         <button class="btn btn-success">수정하기</button>

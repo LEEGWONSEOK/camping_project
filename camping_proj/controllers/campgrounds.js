@@ -41,7 +41,11 @@ module.exports.readCampEdit = async(req, res) => {
 
 module.exports.updateCamp = async (req, res) => {
   const { id } = req.params;
+  console.log(req.file[0].location);
   const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
+  campground.image = req.files[0].location;
+  console.log(req.body.campground)
+  await campground.save();
   req.flash('success', '[알림] 캠핑장 정보를 수정하셨습니다!');
   res.redirect(`/campgrounds/${campground._id}`);
 }

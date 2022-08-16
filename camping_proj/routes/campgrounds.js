@@ -38,7 +38,7 @@ router.get('/:id', catchAsync(campCtrl.readCamp));
 
 // Update Campground
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campCtrl.readCampEdit));
-router.put('/:id', isLoggedIn, isAuthor, validateCamp, catchAsync(campCtrl.updateCamp));
+router.put('/:id', isLoggedIn, isAuthor, upload.array('image'), validateCamp, catchAsync(campCtrl.updateCamp));
 
 // Delete Campground
 router.delete('/:id', isLoggedIn, isAuthor, catchAsync(campCtrl.deleteCamp));

@@ -31,14 +31,16 @@
       </div>
       <div class="mb-4">
         <label for="location" class="form-label">주소</label>
-        <input class="form-control" type="text" name="campground[location]" id="location" required placeholder="주소를 입력해주세요">
+        <input class="form-control" type="text" name="campground[location]" id="location" required placeholder="주소를 입력해주세요 (경기도 성남시 분당구 삼평동)">
         <div class="invalid-feedback">
           (필수) 주소를 입력해주세요!
         </div>
       </div>
       <div class="mb-4">
-        <label for="image" class="form-label">사진</label>
-        <input type="file" name="image" id="image" multiple>
+        <label for="image" class="form-label">사진(필수)</label>
+        <div>
+          <input type="file" name="image" id="image" multiple>
+        </div>
         <div class="invalid-feedback">
           (필수) 사진 Url을 입력해주세요!
         </div>
