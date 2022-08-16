@@ -41,7 +41,6 @@ module.exports.readCampEdit = async(req, res) => {
 
 module.exports.updateCamp = async (req, res) => {
   const { id } = req.params;
-  console.log(req.file[0].location);
   const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
   campground.image = req.files[0].location;
   console.log(req.body.campground)
