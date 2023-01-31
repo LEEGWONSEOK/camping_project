@@ -36,17 +36,12 @@
 ## ⚙️ Running the App
 
 ```bash
-# Docker-Compose Running
-$ docker-compose up # dev mode
-
 # Running the App in local
-$ npm run start:dev  # dev mode
+$ npm start
+
+# pm2
+$ npm run pm2:start
 ```
 
 <br>
 
-## Database
-
-![database](./READMEfile/coogleDB.drawio.png)
-
-<br>
